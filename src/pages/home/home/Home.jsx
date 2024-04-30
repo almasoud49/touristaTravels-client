@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import HomeCard from "./HomeCard";
+
 
 import { axiosSecure } from "../../../hooks/useAxios";
 import ServiceCard from "../../services/ServiceCard";
@@ -19,7 +19,7 @@ const Home = () => {
       
       {services.map((service) => (
         <ServiceCard key={service._id} service={service}></ServiceCard>
-            //  <HomeCard key={service._id} service={service}></HomeCard>
+            
       ))}
  
      
