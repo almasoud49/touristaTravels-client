@@ -111,7 +111,7 @@ const Registration = () => {
               </button>
             </div>
           </form>
-          <p className="text-sm text-gray-500 text-center my-5">
+          <p className="text-sm text-gray-500 text-center mt-0 mb-5">
             Already have an account?{" "}
             <Link to="/login" className="text-gray-700 underline">
               Log in
