@@ -28,8 +28,8 @@ const NavBar = () => {
       {navItems}
     </ul>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
+  <div className="navbar-end ">
+    <Link to='/login' className="btn ">Login</Link>
   </div>
 </div>
     );
