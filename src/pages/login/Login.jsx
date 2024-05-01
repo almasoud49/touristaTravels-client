@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import ProviderLogin from "../../pages/providerLogin/ProviderLogin";
+import { axiosSecure } from "../../hooks/useAxios";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -16,14 +17,44 @@ const Login = () => {
     const { email, password } = data;
     handleLoginUser(email, password);
   };
+  //login user
   const handleLoginUser = (email, password) => {
     signIn(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        // console.log(user);
+        handleJwtToken(user);
       })
       .catch((err) => console.log(err.message));
   };
+//handle jwt token
+const handleJwtToken = (user) => {
+  const currentUser = { userId: user?.userId };
+		// fetch("http://localhost:5000/jwt", {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'content-type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify(currentUser),
+		// })
+		// 	.then((res) => res.json())
+		// 	.then((token) => {
+		// 		document.cookie = "tourist-Travel=" + token.token
+		// 	});
+
+    axiosSecure.post('/jwt', currentUser)
+  .then((res) => {
+    document.cookie = "tourist-Travel=" + res.data.token;
+    
+  })
+  .catch((error) => {
+    console.log(error.message);
+    
+    
+  });
+    
+};
+
   return (
     <div className="hero min-h-screen  bg-base-200">
       <div className="hero-content flex-col ">

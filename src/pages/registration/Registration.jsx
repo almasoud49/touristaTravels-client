@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { axiosSecure } from "../../hooks/useAxios";
 
 const Registration = () => {
-  const { createUser } = useAuth();
+  const navigate = useNavigate();
+  const { createUser, updateUserProfile, logOut } = useAuth();
   const {
     register,
     handleSubmit,
@@ -15,13 +17,41 @@ const Registration = () => {
     handleCreateUser(email, password, name, photoURL);
   };
 
+  //create user
   const handleCreateUser = (email, password, name, photoURL) => {
     createUser(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        handleUpdateUserProfile(name, photoURL);
+        saveUserDataInDB(name, email, photoURL, user.userId);
       })
       .catch((err) => console.log(err.message));
+  };
+
+  //update user profile
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profileData = {
+      displayName: name,
+      photoURL,
+    };
+    updateUserProfile(profileData)
+      .then(() => {
+        logOut().then(() => {
+          navigate("/login");
+        });
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  //save user data into db
+  const saveUserDataInDB = (name, email, photoURL, userId) => {
+    const user = { displayName: name, email, photoURL, userId };
+    axiosSecure
+      .post("/users", user)
+      .then((res) => console.log(res.data))
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (

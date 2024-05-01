@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
-    withCredentials: true
+  baseURL: "http://localhost:5000",
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  }
+  
 });

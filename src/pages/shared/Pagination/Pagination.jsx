@@ -8,7 +8,7 @@ const Pagination = ({ paginationInfo }) => {
 				<div>
 					<div className='divider'></div>
 					<p className='text-center'>
-						page: {page + 1}/{pages} - view: {size}
+						Page: {page + 1}/{pages} - View: {size}
 					</p>
 					<ol className='flex justify-center gap-1 text-xs font-medium items-center'>
 						{[...Array(pages).keys()].map((num) => (
