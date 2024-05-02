@@ -1,14 +1,12 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 import ProviderLogin from "../providerLogin/ProviderLogin";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { axiosSecure } from "../../hooks/useAxios";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location?.state?.from?.pathname || "/";
   const { signIn } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -19,40 +17,39 @@ const Login = () => {
     const { email, password } = data;
     handleLoginUser(email, password);
   };
+  //login user
   const handleLoginUser = (email, password) => {
     signIn(email, password)
       .then((res) => {
         const user = res.user;
-        alert("Login Success");
+        // console.log(user);
         handleJwtToken(user);
-        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err.message));
   };
+  //handle jwt token
   const handleJwtToken = (user) => {
     const currentUser = { uid: user?.uid };
-    fetch("http://localhost:5000/jwt", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(currentUser),
-    })
-      .then((res) => res.json())
-      .then((token) => {
-        document.cookie = "tt-token=" + token.token;
+
+    axiosSecure
+      .post("/jwt", currentUser)
+      .then((res) => {
+        document.cookie = "tourist-Travel=" + res.data.token;
+      })
+      .catch((error) => {
+        console.log(error.message);
       });
   };
 
   return (
-    <section className="bg-white">
-      <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
-        <main
-          aria-label="Main"
-          className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
-        >
-          <div className="max-w-xl lg:max-w-3xl">
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
+    <div className="hero min-h-screen  bg-base-200">
+      <div className="hero-content flex-col ">
+        <div className="text-center ">
+          <h1 className="text-5xl font-bold">Login Now!</h1>
+        </div>
+        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card-body ">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -66,11 +63,12 @@ const Login = () => {
                   })}
                 />
               </div>
-              <label className="label">
+              <label className="label ">
                 {errors.email && (
                   <span className="label-text-alt">This field is required</span>
                 )}
               </label>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
@@ -91,26 +89,25 @@ const Login = () => {
               </label>
 
               <div className=" sm:flex sm:items-center sm:gap-4">
-                <button className="btn btn-primary rounded-md px-12 py-3">
+                <button className="btn btn-primary rounded-md px-12 ">
                   Login
                 </button>
               </div>
             </form>
-            <p className="mt-4 text-sm text-gray-500 sm:mt-0">
-              Do not have an account?{" "}
-              <Link to="/registration" className="text-gray-700 underline">
-                Create an account
-              </Link>
-              .
-            </p>
-            <div className="my-3">
-              <div className="divider text-xl">OR</div>
-              <ProviderLogin />
-            </div>
           </div>
-        </main>
+          <p className="text-sm text-gray-500 text-center mt-0 mb-5">
+            Do not have an account?{" "}
+            <Link to="/registration" className="text-gray-700 underline">
+              Signup
+            </Link>
+          </p>
+          <div className="my-3">
+            <div className="divider text-xl">OR</div>
+            <ProviderLogin />
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
