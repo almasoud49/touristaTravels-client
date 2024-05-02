@@ -17,9 +17,12 @@ const NavBar = () => {
         <Link to="/blogs">Blogs</Link>{" "}
       </li>
       <li>
-            <Link to="/my-review">My Review</Link>
-          </li>
-      
+        <Link to="/my-review">My Review</Link>
+      </li>
+      <li>
+        <Link to="/add-service">Add Service</Link>
+      </li>
+
       {/* {user?.uid && (
         <>
           <li>
@@ -57,7 +60,7 @@ const NavBar = () => {
             {navItems}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">touristaTravels</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>

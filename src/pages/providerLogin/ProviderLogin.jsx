@@ -1,7 +1,7 @@
 
 import { GoogleAuthProvider } from "firebase/auth";
 import useAuth from "../../hooks/useAuth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaGoogle} from 'react-icons/fa';
 
 const ProviderLogin = () => {
   const { providerLogin } = useAuth();
@@ -22,11 +22,8 @@ const ProviderLogin = () => {
         onClick={handleGoogleLogin}
         className="btn btn-ghost flex justify-center items-center gap-3 border border-gray-300 shadow"
       >
-        <FontAwesomeIcon
-          className="text-xl font-bold text-blue"
-          // icon={faGoogle}
-        />
-        <span>Continue With Google</span>
+      
+        <span className="flex "><FaGoogle className="me-2" />  Continue With Google</span>
       </button>
     </div>
   );
