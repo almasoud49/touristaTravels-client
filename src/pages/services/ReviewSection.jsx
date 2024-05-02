@@ -155,9 +155,7 @@ const ReviewSection = ({ service }) => {
                   <span className="label-text-alt">This field is required</span>
                 )}
               </label>
-              {/* <div className='flex justify-center'>
-								{btnLoading && <BtnSpinner />}
-							</div> */}
+
               <div className="modal-action">
                 {!btnLoading && (
                   <>

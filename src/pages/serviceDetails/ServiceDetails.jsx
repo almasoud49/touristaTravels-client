@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { axiosSecure } from "../../hooks/useAxios";
-import ReviewSection from "../services/ReviewSection2";
+import ReviewSection from "../services/ReviewSection";
 
 const ServiceDetails = () => {
   const params = useParams();

@@ -16,13 +16,17 @@ const NavBar = () => {
         {" "}
         <Link to="/blogs">Blogs</Link>{" "}
       </li>
-      {user?.uid && (
+      <li>
+            <Link to="/my-review">My Review</Link>
+          </li>
+      
+      {/* {user?.uid && (
         <>
           <li>
             <Link to="/my-review">My Review</Link>
           </li>
         </>
-      )}
+      )} */}
     </>
   );
 

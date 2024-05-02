@@ -15,6 +15,7 @@ const MyReview = () => {
   const [reloadData, setReloadData] = useState(0);
   const navigate = useNavigate();
   const [rating, setRating] = useState(4);
+
   const {
     register,
     handleSubmit,
@@ -33,14 +34,14 @@ const MyReview = () => {
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOut().then(() => {
-            alert("Session Expired, Login Again");
+            console.log("Session Expired at get review, Login Again");
           });
         }
         return res.json();
       })
       .then((data) => {
-        setReviews(data.reviews);
-        setCount(data.count);
+        setReviews(data?.reviews);
+        setCount(data?.count);
         setLoading(false);
       });
   }, [logOut, user?.uid, reloadData, setLoading]);
@@ -68,7 +69,7 @@ const MyReview = () => {
           .then((res) => {
             if (res.status === 401 || res.status === 403) {
               return logOut().then(() => {
-                alert("Session Expired, Login Again");
+                console.log("Session Expired at delete review, Login Again");
                 navigate("/login");
               });
             }
@@ -128,7 +129,7 @@ const MyReview = () => {
     }
     if (response.status === 401 || response.status === 403) {
       return logOut().then(() => {
-        alert("Session Expired, Login Again");
+        console.log("Session Expired at update review, Login Again");
         localStorage.removeItem("ph-token");
         navigate("/login");
       });
@@ -209,17 +210,17 @@ const MyReview = () => {
           {/* Review Modal */}
 
           <div className="w-11/12 mx-auto">
-            <h2 className="text-3xl uppercase font-light">
-              You reviewed {count} service
+            <h2 className="text-3xl  font-light">
+              You Reviewed {count} Service
             </h2>
-            <p className="text-sm uppercase">
-              Checkout all your review those you give our services
+            <p className="text-sm ">
+              Checkout All your Review those you Give our Services
             </p>
             <div className="divider"></div>
             <div>
               {count && user?.uid ? (
                 <div className="grid gap-10">
-                  {reviews.map((review) => (
+                  {reviews?.map((review) => (
                     <MyReviewItem
                       handleDelete={handleDelete}
                       handleUpdate={handleUpdate}
