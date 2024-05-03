@@ -14,36 +14,34 @@ const Home = () => {
   }, [url]);
 
   return (
-    <section>
+    <section className="bg-stone-900 text-white">
       <div>
-      <Banner/>
+        <Banner />
       </div>
-      <div className="divider  text-sm font-bold uppercase py-5">Our Services</div>
+      <div className="divider  text-sm font-bold uppercase py-5">
+        Our Services
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 ml-10">
         {services.map((service) => (
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}
       </div>
       <div className="flex flex-col w-full">
-        <div className="divider  mt-10">
-          <Link
-            to="/services"
-            className='className="mt-10 block btn btn-primary  px-12 py-3 text-sm font-bold uppercase tracking-wider text-white transition focus:outline-none'
-          >
-            See All
-          </Link>
+        <div className=" ">
+          <div className="flex flex-col w-full">
+            <div className="divider divider-end">
+              <Link
+                to="/services"
+                className='className=" me-16  btn-primary   py-3 text-sm font-bold uppercase tracking-wider text-white transition'
+              >
+                See All
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="flex flex-col w-full">
-        <div className="divider  mt-10">
-          
-            Email Subscription
-          
-        </div>
-      </div>
-        <NewsLetter/>
-      
+      <NewsLetter />
     </section>
   );
 };

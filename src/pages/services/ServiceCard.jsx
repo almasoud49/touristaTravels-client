@@ -4,14 +4,15 @@ const ServiceCard = ({ service }) => {
   const { _id, title, img, description, price } = service;
 
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-96 bg-stone-900 text-white shadow-xl mt-4">
       <figure>
         <img src={img} alt="Shoes" />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{title}</h2>
-        <p>{description}</p>
-        <p>Price: {price}</p>
+      <div className="card-body ">
+        <h2 className="card-title text-white">{title}</h2>
+        <p className="text-white">{description.slice(0, 100)}...</p>
+        
+        <p className="text-white">Price: {price}</p>
 
         <Link
           to={`/service/${_id}`}

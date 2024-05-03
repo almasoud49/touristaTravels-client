@@ -13,7 +13,7 @@ const Blogs = () => {
         .then(res => setBlogs(res.data))
     },[])
     return (
-        <div>
+        <div  className="bg-stone-900 text-white">
            {
             blogs.map((blog)=>(
                 <BlogQuestions key={blog._id} blog={blog}></BlogQuestions>

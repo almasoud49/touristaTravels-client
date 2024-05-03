@@ -14,7 +14,7 @@ const NewsLetter = () => {
   };
 
   return (
-    <div className="p-8 md:p-12 lg:px-16 lg:py-24 bg-gray-50">
+    <div className="p-8 md:p-12 lg:px-16 lg:py-24 bg-stone-900">
       <div className="mx-auto mt-8 max-w-xl">
         <form onSubmit={handleSubscribe} className="sm:flex sm:gap-4">
           <div className="sm:flex-1">
@@ -23,7 +23,7 @@ const NewsLetter = () => {
             <input
               type="email"
               placeholder="Email address"
-              className="w-full rounded-md border-gray-200 bg-white p-3 text-gray-700 shadow-sm transition focus:border-white focus:outline-none"
+              className="w-full rounded-md border-gray-200 bg-slate-700 p-3 text-white-700 shadow-sm transition focus:border-white focus:outline-none"
               required
             />
           </div>
