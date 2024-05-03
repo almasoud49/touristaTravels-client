@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        toast.success("User Logout Successfully");
+      })
+      .catch((err) => toast.err(err.message));
+  };
   const navItems = (
     <>
       <li>
@@ -16,20 +25,21 @@ const NavBar = () => {
         {" "}
         <Link to="/blogs">Blogs</Link>{" "}
       </li>
-      <li>
-        <Link to="/my-review">My Review</Link>
-      </li>
-      <li>
-        <Link to="/add-service">Add Service</Link>
-      </li>
+    
 
-      {/* {user?.uid && (
+      {user?.uid && (
         <>
           <li>
             <Link to="/my-review">My Review</Link>
           </li>
+          <li>
+            <Link to="/add-service">Add Service</Link>
+          </li>
+          <li>
+            <button onClick={handleLogout}>Logout</button>
+          </li>
         </>
-      )} */}
+      )}
     </>
   );
 

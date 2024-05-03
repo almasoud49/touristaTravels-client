@@ -9,11 +9,13 @@ import Registration from "../pages/registration/Registration";
 import MyReview from "../pages/myReview/MyReview";
 import AddService from "../pages/addService/AddService";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/errorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage/>,
       children:[
         {
           path:"/",
@@ -42,6 +44,7 @@ const router = createBrowserRouter([
         {
           path:"/my-review",
           element:<PrivateRoute><MyReview/></PrivateRoute>
+          // element:<MyReview/>
         },
         {
           path:"/add-service",

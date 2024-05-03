@@ -23,7 +23,6 @@ const MyReview = () => {
     formState: { errors },
   } = useForm();
 
-  //
   useEffect(() => {
     setLoading(true);
     fetch(`http://localhost:5000/my-review?uid=${user?.uid}`, {
@@ -46,7 +45,6 @@ const MyReview = () => {
       });
   }, [logOut, user?.uid, reloadData, setLoading]);
 
-  //
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -92,7 +90,6 @@ const MyReview = () => {
     });
   };
 
-  //
   const onSubmit = async (inputData) => {
     const { user_review } = inputData;
     const modal = document.getElementById("my-modal");
@@ -207,7 +204,6 @@ const MyReview = () => {
               </div>
             </form>
           </div>
-          {/* Review Modal */}
 
           <div className="w-11/12 mx-auto">
             <h2 className="text-3xl  font-light">
