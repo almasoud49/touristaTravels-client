@@ -28,6 +28,7 @@ const AddService = () => {
       createBy: auth.currentUser?.uid,
       createAt: new Date(),
     };
+
     fetch(`http://localhost:5000/services?uid=${auth?.currentUser?.uid}`, {
       method: "POST",
       headers: {
@@ -52,8 +53,6 @@ const AddService = () => {
       });
   };
 
-  //
-
   useEffect(() => {
     setLoading(true);
     fetch(`http://localhost:5000/my-service?uid=${user?.uid}`, {
@@ -70,7 +69,7 @@ const AddService = () => {
   }, [user?.uid, reloadData]);
 
   return (
-    <section className="">
+    <section>
       {!loading && (
         <div className="mx-auto w-11/12">
           <h1 className="text-3xl  font-light">

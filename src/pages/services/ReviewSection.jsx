@@ -29,7 +29,6 @@ const ReviewSection = ({ service }) => {
     pages,
   };
 
-  //
   const {
     register,
     handleSubmit,
@@ -79,7 +78,6 @@ const ReviewSection = ({ service }) => {
       });
   };
 
-  //
   useEffect(() => {
     fetch(
       `http://localhost:5000/reviews?service_id=${params.id}&page=${page}&size=${size}`
@@ -91,8 +89,6 @@ const ReviewSection = ({ service }) => {
         setAverage(data.average);
       });
   }, [page, params.id, reloadData, size]);
-
-  //
 
   return (
     <section>
@@ -187,7 +183,6 @@ const ReviewSection = ({ service }) => {
         </form>
       </div>
 
-      {/* Review Modal */}
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <h2 className="text-xl font-bold sm:text-2xl">Customer Reviews</h2>
 

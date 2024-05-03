@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import MyReviewItem from "./MyReviewItem";
+import toast from "react-hot-toast";
 
 const MyReview = () => {
   const [selectUpdate, setSelectUpdate] = useState({});
@@ -33,7 +34,7 @@ const MyReview = () => {
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOut().then(() => {
-            console.log("Session Expired at get review, Login Again");
+            toast.error("Session Expired at get review, Login Again");
           });
         }
         return res.json();
@@ -55,7 +56,6 @@ const MyReview = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         setBtnLoading(true);
         fetch(`http://localhost:5000/my-review?id=${id}&uid=${user?.uid}`, {
@@ -67,7 +67,7 @@ const MyReview = () => {
           .then((res) => {
             if (res.status === 401 || res.status === 403) {
               return logOut().then(() => {
-                console.log("Session Expired at delete review, Login Again");
+                toast.error("Session Expired at delete review, Login Again");
                 navigate("/login");
               });
             }
@@ -126,8 +126,8 @@ const MyReview = () => {
     }
     if (response.status === 401 || response.status === 403) {
       return logOut().then(() => {
-        console.log("Session Expired at update review, Login Again");
-        localStorage.removeItem("ph-token");
+        toast.error("Session Expired at update review, Login Again");
+        localStorage.removeItem("touristaTravels-token");
         navigate("/login");
       });
     }

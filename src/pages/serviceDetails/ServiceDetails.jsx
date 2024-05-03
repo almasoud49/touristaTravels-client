@@ -9,7 +9,6 @@ const ServiceDetails = () => {
   const params = useParams();
   const [service, setService] = useState({});
   const { title, img, description, price } = service;
-  // console.log(service)
 
   useEffect(() => {
     const url = `/service/${params.id}`;

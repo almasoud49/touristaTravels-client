@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
+import img from "../../../assets/img.png"
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
@@ -25,7 +26,6 @@ const NavBar = () => {
         {" "}
         <Link to="/blogs">Blogs</Link>{" "}
       </li>
-    
 
       {user?.uid && (
         <>
@@ -70,7 +70,16 @@ const NavBar = () => {
             {navItems}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">touristaTravels</a>
+        <Link
+					to='/'
+					className='normal-case text-xl font-bold flex justify-center items-center'
+				>
+					<img  className='w-6 rounded-full me-1' src={img} alt='' />
+					<span>touristaTravels</span>
+          
+				</Link>
+        
+       
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>

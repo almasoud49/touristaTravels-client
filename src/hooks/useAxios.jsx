@@ -5,7 +5,5 @@ export const axiosSecure = axios.create({
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
-    // authorization: `Bearer ${document.cookie.split('=')[1]}`
-  }
-  
+  },
 });

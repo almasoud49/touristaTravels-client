@@ -12,47 +12,53 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/errorPage/ErrorPage";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <ErrorPage />,
+    children: [
+      {
         path: "/",
-      element: <Main></Main>,
-      errorElement:<ErrorPage/>,
-      children:[
-        {
-          path:"/",
-          element:<Home/>
-        },
-        {
-          path:"/service/:id",
-          element:<ServiceDetails/>
-        },
-        {
-          path:"/services",
-          element:<Services/>
-        },
-        {
-          path:"/blogs",
-          element:<Blogs/>
-        },
-        {
-          path:"/login",
-          element:<Login/>
-        },
-        {
-          path:"/registration",
-          element:<Registration/>
-        },
-        {
-          path:"/my-review",
-          element:<PrivateRoute><MyReview/></PrivateRoute>
-          // element:<MyReview/>
-        },
-        {
-          path:"/add-service",
-          element:<PrivateRoute><AddService/></PrivateRoute>
-        }
-
-      ]
-    }
+        element: <Home />,
+      },
+      {
+        path: "/service/:id",
+        element: <ServiceDetails />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
+      {
+        path: "/my-review",
+        element: (
+          <PrivateRoute>
+            <MyReview />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/add-service",
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
 ]);
 
 export default router;
