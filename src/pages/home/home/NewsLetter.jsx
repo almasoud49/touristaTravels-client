@@ -14,7 +14,7 @@ const NewsLetter = () => {
   };
 
   return (
-    <div className="p-8 md:p-12 lg:px-16 lg:py-24 bg-stone-900">
+    <div className="p-8 md:p-12 lg:px-16 lg:py-24 ">
       <div className="mx-auto mt-8 max-w-xl">
         <form onSubmit={handleSubscribe} className="sm:flex sm:gap-4">
           <div className="sm:flex-1">

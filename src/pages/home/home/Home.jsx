@@ -14,7 +14,7 @@ const Home = () => {
   }, [url]);
 
   return (
-    <section className="bg-stone-900 text-white">
+    <section className=" text-white">
       <div>
         <Banner />
       </div>

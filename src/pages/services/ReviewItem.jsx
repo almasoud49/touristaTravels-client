@@ -17,7 +17,7 @@ const ReviewItem = ({ review }) => {
   const time = timeConvert(date[4]);
 
   return (
-    <blockquote className="border border-gray-100 shadow-sm p-5 rounded-md">
+    <blockquote className="border border-gray-100 shadow-sm p-5 rounded-md ">
       <header className="sm:flex sm:items-center">
         <div className="group flex shrink-0 items-center rounded-lg transition">
           <img

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
-import img from "../../../assets/img.png"
+import img from "../../../assets/img.png";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
@@ -71,23 +71,40 @@ const NavBar = () => {
           </ul>
         </div>
         <Link
-					to='/'
-					className='normal-case text-xl font-bold flex justify-center items-center'
-				>
-					<img  className='w-6 rounded-full me-1' src={img} alt='' />
-					<span>touristaTravels</span>
-          
-				</Link>
-        
-       
+          to="/"
+          className="normal-case text-xl font-bold flex justify-center items-center"
+        >
+          <img className="w-6 rounded-full me-1" src={img} alt="" />
+          <span>touristaTravels</span>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end ">
-        <Link to="/login" className="btn ">
-          Login
-        </Link>
+        <>
+          {user?.uid ? (
+            <>
+              <img
+                alt="Man"
+                src={user?.photoURL}
+                className="h-10 w-10 rounded-full object-cover"
+              />
+
+              <p className="ml-2 hidden text-left text-xs sm:block">
+                <strong className="block font-medium">
+                  {user?.displayName}
+                </strong>
+
+                <span className="text-gray-500"> {user?.email} </span>
+              </p>
+            </>
+          ) : (
+            <Link to="/login" className="btn ">
+              Login
+            </Link>
+          )}
+        </>
       </div>
     </div>
   );
