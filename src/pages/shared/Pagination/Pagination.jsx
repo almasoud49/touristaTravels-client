@@ -5,7 +5,7 @@ const Pagination = ({ paginationInfo }) => {
     <div>
       {!!pages && (
         <div>
-          <div className="divider"></div>
+          
 
           <ol className="flex justify-center gap-1 text-xs font-medium items-center">
             {[...Array(pages).keys()].map((num) => (
