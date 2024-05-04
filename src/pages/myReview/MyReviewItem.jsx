@@ -31,9 +31,9 @@ const MyReviewItem = ({ review, handleDelete, handleUpdate, btnLoading }) => {
   const day = date[2];
   const time = timeConvert(date[4]);
   return (
-<article className='flex bg-white transition hover:shadow-lg shadow border border-gray-100'>
+<article className='flex bg-black  transition hover:shadow-lg shadow border border-gray-100'>
 			<div className='rotate-180 p-2 [writing-mode:_vertical-lr]'>
-				<div className='flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900'>
+				<div className='flex items-center justify-between gap-4 text-white text-xs font-bold uppercase '>
 					<span>{year}</span>
 					<span className='w-px flex-1 bg-gray-900/10'></span>
 					<span>
@@ -50,7 +50,7 @@ const MyReviewItem = ({ review, handleDelete, handleUpdate, btnLoading }) => {
 				/>
 			</div>
 
-			<div className='flex flex-1 flex-col justify-between'>
+			<div className='flex flex-1 flex-col justify-between '>
 				<div className='border-l border-gray-900/10 p-4 sm:border-l-transparent sm:p-6'>
 					<span>
 						<p className='uppercase text-xs opacity-70'>
@@ -73,12 +73,12 @@ const MyReviewItem = ({ review, handleDelete, handleUpdate, btnLoading }) => {
 								</svg>
 							))}
 						</div>
-						<h3 className='font-bold uppercase text-gray-900 link link-hover'>
+						<h3 className='font-bold uppercase text-white link link-hover'>
 							<Link to={`/service/${service_id}`}>{service_name}</Link>
 						</h3>
 					</span>
 
-					<p className='mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3'>
+					<p className='mt-2 text-sm leading-relaxed text-white line-clamp-3'>
 						{user_review}
 					</p>
 				</div>
@@ -92,7 +92,7 @@ const MyReviewItem = ({ review, handleDelete, handleUpdate, btnLoading }) => {
 					</button>
 					<button
 						onClick={() => handleDelete(_id)}
-						className='block btn-primary px-5 py-3 text-center text-xs font-bold uppercase'
+						className='block btn-primary px-5 py-3 text-center text-white text-xs font-bold uppercase'
 					>
 						{!btnLoading ? (
 							'Delete'

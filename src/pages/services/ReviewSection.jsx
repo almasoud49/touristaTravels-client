@@ -218,14 +218,14 @@ const ReviewSection = ({ service }) => {
             </div>
           </div>
           <div>
-            <label htmlFor="my-modal" className="btn btn-primary">
+            <label htmlFor="my-modal" className="btn btn-primary text-white">
               Write A Review
             </label>
           </div>
         </div>
 
         <div className="divider"></div>
-        <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 lg:grid-cols-2 h-full">
+        <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 lg:grid-cols-2 h-full text-white">
           {reviews.map((review) => (
             <ReviewItem key={review._id} review={review} />
           ))}

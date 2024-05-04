@@ -140,7 +140,7 @@ const MyReview = () => {
   };
 
   return (
-    <div className="min-h-screen my-10">
+    <div className="min-h-screen my-10 ">
       {!loading && (
         <>
           <input type="checkbox" id="my-modal" className="modal-toggle" />
@@ -215,7 +215,7 @@ const MyReview = () => {
             <div className="divider"></div>
             <div>
               {count && user?.uid ? (
-                <div className="grid gap-10">
+                <div className="grid gap-10 ">
                   {reviews?.map((review) => (
                     <MyReviewItem
                       handleDelete={handleDelete}
